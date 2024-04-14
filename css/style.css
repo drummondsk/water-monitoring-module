@@ -103,6 +103,13 @@ img {
 
 /* ======================= NAVBAR ====================== */
 
+/* ============= JAVASCRIPT: CHANGE NAVBAR STYLES ON SCROLL =============== */
+.window-scroll {
+    background: var(--color-primary);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.3);
+}
+
+
 nav{
     background: transparent;
     width: 100vw;
@@ -145,7 +152,7 @@ header{
     position: relative;
     top: 5rem;
     overflow: hidden;
-    height: 70vh;
+    height: 80vh;
     margin-bottom: 5rem;
 }
 
@@ -169,7 +176,7 @@ header{
 
 .categories{
     background: var(--color-bg1);
-    height: 29rem;
+    height: 39rem;
     padding-top: 2rem;
 }
 
@@ -236,3 +243,89 @@ header{
     background: var(--color-operation);
 }
 
+/* ======================== POPULAR COURSES ========================= */
+
+.courses {
+    margin-top: 10rem;
+}
+
+.courses__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.course {
+    background: var(--color-bg1);
+    text-align: center;
+    border: 1px solid transparent;
+    transition: var(--transiton);
+}
+
+.course:hover{
+    background: transparent;
+    border-color: var(--color-primary);
+}
+.courses h2 {
+    text-align: center;
+}
+
+.course__info {
+    padding: 2rem;
+}
+
+.course__info p {
+    margin: 1.2rem 0 2rem;
+    font-size: 0.9rem;
+}
+
+/* ======================= FAQS ========================= */
+
+.faqs {
+    
+
+    background: var(--color-bg1);
+    box-shadow: inset 0 0 3rem rgba(0,0,0,0.3);
+}
+
+.faqs h2 { 
+    text-align: center; 
+    padding: 5rem; 
+}
+
+
+.faqs__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.faq{
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap:  1.5rem;
+    height: fit-content;
+    background: var(--color-primary);
+    cursor: pointer;
+}
+
+.faq h4 {
+    font-size: 1rem;
+    line-height: 2.2;
+}
+
+.faq__icon{
+    align-self: flex-start;
+    font-size: 1.2rem;
+}
+
+.faq p { 
+    margin: 0.8rem;
+    display: none;
+}
+
+.faq.open p {
+    display: block;
+}
