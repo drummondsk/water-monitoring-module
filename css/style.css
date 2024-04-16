@@ -112,7 +112,8 @@ img {
 
 
 nav{
-    background: transparent;
+    background: var(--color-primary);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.3);
     width: 100vw;
     height: 5rem;
     position: fixed;
@@ -153,7 +154,7 @@ header{
     position: relative;
     top: 5rem;
     overflow: hidden;
-    height: 80vh;
+    height: 88vh;
     margin-bottom: 5rem;
 }
 
@@ -165,13 +166,16 @@ header{
     height: 100%;
 }
 
+
 .header__left p {
     margin: 1rem 0 2.4rem;
 }
 
 .header__right img{
+    width: 32rem;
     border-radius: 2%;
 }
+
 
 /* ==================== CATEGORIES ================ */
 
