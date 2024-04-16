@@ -215,6 +215,8 @@ button:hover {
     border-color: var(--color-white);
 }
 
+/* =================== QUIZ SECTION  ================= */
+
 .correct-container {
     background: green; /* Change to your desired color for correct answers */
 }
@@ -239,6 +241,8 @@ button:hover {
     color: var(--color-white);
     border-color: var(--color-white);
 }
+
+/* ======================= RESULTS OF QUIZ = ==================== */
 
 .results__header__container{
     max-width: 90%;
