@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Monitoring</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/courses.css">
+
+    <!-- Icon Scout Icon -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"/>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <!--- =============== NAVBAR ====================---->
+
+    <nav>
+        <div class="container nav__container">
+            <a href="../../index.html"><h4>LOGO</h4></a>
+            <ul class="nav__menu">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../courses.html">Courses</a></li>
+                <li><a href="../../contact.html">Contact</a></li>
+            </ul>
+            <button id="open-menu-btn"><i class="uil uil-bars"></i></button>
+            <button id="close-menu-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+
+
+    <header>
+        <div class="header__container">
+            <h1>Test Your Knowledge</h1>
+        </div>
+        <div class="results__header__container" style="display: none;">
+            <h1>Congratulations, you have completed the course! </h1>
+        </div>
+        
+    </header>
+
+    <main>
+        <section class="questions">
+            <h2>Questions</h2>
+            <!-- Quiz questions will be inserted here by JavaScript -->
+        </section>
+
+        <section class="results" style="display: none;">
+            <h2>Results</h2>
+            <p>You got <span id="correct">0</span> out of <span id="total">0</span> correct!</p>
+            <button id="exit"><a href="../../courses.html">Exit</a> </button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__1">
+                <a href="../../index.html" class="footer__logo"><h4>Precision Agriculture</h4></a>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus malesuada neque et scelerisque. 
+                </p>
+            </div>
+
+            <div class="footer__2">
+                <h4>Permalinks</h4>
+                <ul class="permalinks">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../about.html">About</a></li>
+                    <li><a href="../../courses.html">Courses</a></li>
+                    <li><a href="../../contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__3">
+                <h4>Primacy</h4>
+                <ul class="privacy">
+                    <li><a href="../../index.html">Privacy Policy</a></li>
+                    <li><a href="../../about.html">Terms and Conditions</a></li>
+                    <li><a href="../../courses.html">Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__4">
+                <h4>Connect with us:</h4>
+                <div>
+                    <p> +1 456 687 7890</p>
+                    <p> precisionanimalag@gmail.com</p>
+                </div>
+            </div>
+
+        </div>      
+    </footer>
+
+    <!--============= END OF FOOTER ===============-->
+
+
+<script src="../../main.js" defer></script>
+<script>
+    // Define the questions for the quiz
+    const quizData = [
+        {
+            question: "What percentage will the global food demand increase by the year 2050?",
+            answers: [
+                { text: "20%", correct: false },
+                { text: "70%", correct: true },
+                { text: "50%", correct: false },
+                { text: "12%", correct: false },
+            ],
+        },
+        {
+            question: "Which climate phenomenon causes a severe lack of water availability?",
+            answers: [
+                { text: "Earthquake", correct: false },
+                { text: "Drought", correct: true },
+                { text: "Monsoon", correct: false },
+                { text: "Famine", correct: false },
+            ],
+        },
+        {
+            question: "According to the course, which of the following is a proposed method by which farmers can monitor and conserve water usage?",
+            answers: [
+                { text: "Precision Agriculture", correct: true },
+                { text: "Drought Simulation", correct: false },
+                { text: "Creating Artificial Lakes", correct: false },
+                { text: "Only Using Rain Water", correct: false },
+            ],
+        },
+    ];
+
+    // Select the HTML elements
+    const questionContainer = document.querySelector(".questions");
+    const resultsContainer = document.querySelector(".results");
+    const restartButton = document.querySelector("#restart");
+    const totalSpan = document.querySelector("#total");
+    const correctSpan = document.querySelector("#correct");
+    const headerContainer = document.querySelector(".header__container");
+    const resultsHeaderContainer = document.querySelector(".results__header__container");
+
+    // Define global variables
+    let currentQuestionIndex = 0;
+    let numCorrect = 0;
+
+    // Function to populate the HTML with question and answer options
+    function showQuestion() {
+        const currentQuestion = quizData[currentQuestionIndex];
+        questionContainer.innerHTML = `
+            <h4>${currentQuestion.question}</h4>
+            <br>
+            <ul>
+                ${currentQuestion.answers.map(answer => `
+                    <li>
+                        <button class="answer-btn">${answer.text}</button>
+                    </li>
+                    <br>
+                `).join("")}
+            </ul>
+        `;
+        const answerButtons = document.querySelectorAll(".answer-btn");
+        answerButtons.forEach(button => {
+            button.addEventListener("click", checkAnswer);
+        }); 
+    }
+
+    // Function to check the selected answer and update global variables accordingly
+    function checkAnswer(e) {
+        const selectedButton = e.target;
+        const answerText = selectedButton.textContent;
+        const isCorrect = quizData[currentQuestionIndex].answers.find(answer => answer.text === answerText).correct;
+        
+        if (isCorrect) {
+            selectedButton.style.backgroundColor = "green";
+            numCorrect++;
+        } else {
+            selectedButton.style.backgroundColor = "red";
+            const correctAnswerButton = [...selectedButton.parentElement.parentElement.querySelectorAll('.answer-btn')].find(btn => btn.textContent === quizData[currentQuestionIndex].answers.find(answer => answer.correct).text);
+            correctAnswerButton.style.backgroundColor = "green";
+        }
+        
+        // Prevent the default behavior of button click to stop immediate navigation to the next question
+        e.preventDefault();
+        
+        // Wait for a short time before moving to the next question
+        setTimeout(() => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex === quizData.length) {
+                showResults();
+            } else {
+                showQuestion();
+            }
+        }, 1000); // Adjust the delay time as needed
+    }
+
+
+    // Function to display the final quiz results
+    function showResults() {
+        questionContainer.style.display = "none";
+        resultsContainer.style.display = "block";
+        resultsHeaderContainer.style.display = "block";
+        headerContainer.style.display = "none";
+        totalSpan.textContent = quizData.length;
+        correctSpan.textContent = numCorrect;
+    }
+
+    // Add event listener to restart the quiz
+    // restartButton.addEventListener("click", () => {
+    //     currentQuestionIndex = 0;
+    //     numCorrect = 0;
+    //     showQuestion();
+    // });
+
+    // Initial display of the first question
+    showQuestion();
+</script>
+
+</body>
+</html>
