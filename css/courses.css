@@ -108,6 +108,18 @@ img {
 
 /* ====================== COURSE MATERIAL ====================== */
 
+.courses{
+    padding-top: 50rem;
+  
+}
+
+.courses__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 10rem;
+}
+
 .course__material{
     position: relative;
     top: 5rem;
@@ -145,4 +157,98 @@ img {
     padding: 2rem;
     box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.3);
     z-index: 11;
+}
+
+.questions {
+    color: var(--color-white);
+    padding: 10rem;
+    margin-top: 10rem;
+    line-height: 1.6;
+    padding: 0 20rem 5rem;
+    text-align:center;
+    
+}
+
+.results {
+    display: none;
+    padding: 5em;
+    margin: auto;
+    line-height: 4rem;
+}
+header{
+    color: var(--color-bg);
+    color: #fff;
+    padding: 1em;
+    height: 6rem;
+    
+}
+
+.header__container{
+    max-width: 90%;
+    margin: 1rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__container h1{
+    text-align: center;
+    margin: auto;
+}
+
+button {
+    
+    display: inline-block;
+    background: var(--color-btn);
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    border: 1px solid transparent;
+    font-weight: 500;
+    transition: var(--transiton);
+    width: 10rem;
+
+}
+
+button:hover {
+    background: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.correct-container {
+    background: green; /* Change to your desired color for correct answers */
+}
+
+.incorrect-container {
+    background: red; /* Change to your desired color for incorrect answers */
+}
+
+.answer-btn{
+    display: inline-block;
+    background: var(--color-btn);
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    border: 1px solid transparent;
+    font-weight: 500;
+    transition: var(--transiton);
+    width: 10rem;
+}
+
+.answer-btn:hover {
+    background: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.results__header__container{
+    max-width: 90%;
+    margin: 1rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.results__header__container h1{
+    text-align: center;
+    margin: auto;
 }
